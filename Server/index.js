@@ -16,8 +16,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/test', {
 
 app.get('/get', (req, res) => {
     TodoModel.find()
-        .then(result => res.json(result))
-        .catch(err => res.status(500).json(err)); // Added status code
+        .then(result => {
+            console.log("Fetched Todos:", result); // Log fetched todos
+            res.json(result);
+        })
+        .catch(err => {
+            console.error("Error fetching todos:", err);
+            res.status(500).json(err);
+        });
 });
 
 app.post('/add', (req, res) => {
