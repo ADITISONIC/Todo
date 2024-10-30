@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import Create from './Create'
+import axios from 'axios'
 
 function Home(){
     const [todos,setTodos] = useState([])
@@ -17,7 +18,7 @@ function Home(){
                 <div><h2>No record</h2></div>:
                 todos.map(todo=>(
                     <div>
-                        {todo}
+                        {todo.task}
                     </div>
                 ))
             }
